@@ -1,0 +1,18 @@
+<script src="qrcode.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<input type="text" id="issuer" style="width:100%" placeholder="Issuer (Google for example)" />
+<input type="text" id="label" style="width:100%" placeholder="Label (For which username etc.)" />
+<input type="text" id="input" style="width:100%" placeholder="Secret Key" />
+<br/>
+<br/>
+<button id="submit">Generate QR Code</button>
+<hr/>
+<div id="qrcode"></div>
+<script type="text/javascript">
+$('#submit').click(function() {
+  console.dir($('#input').val());
+  $('#qrcode').empty();
+  new QRCode(document.getElementById("qrcode"), "otpauth://totp/"+$('#label').val()+"?secret="+$('#input').val()+"&"+"issuer="+$('#issuer').val());
+});
+</script>
