@@ -1,17 +1,31 @@
-<script src="qrcode.min.js"></script>
-<script src="jquery.min.js"></script>
+<html>
+  <head>
+    <script src="qrcode.min.js"></script>
+    <script src="jquery.min.js"></script>
+  </head>
+  <body>
+    
+    <form>
+      <input type="text" id="issuer" style="width:75%" placeholder="Issuer (Google for example)" />
+      <br/>
+      <br/>
+      <input type="text" id="label" style="width:75%" placeholder="Label (For which username etc.)" />
+      <br/>
+      <br/>
+      <input type="text" id="input" style="width:75%" placeholder="Secret Key" />
+      <br/>
+    </form>
+    <button id="submit">Generate QR Code</button>
 
-<input type="text" id="issuer" style="width:100%" placeholder="Issuer (Google for example)" />
-<input type="text" id="label" style="width:100%" placeholder="Label (For which username etc.)" />
-<input type="text" id="input" style="width:100%" placeholder="Secret Key" />
-<br/>
-<br/>
-<button id="submit">Generate QR Code</button>
-<hr/>
-<div id="qrcode"></div>
-<script type="text/javascript">
-$('#submit').click(function() {
-  $('#qrcode').empty();
-  new QRCode(document.getElementById("qrcode"), "otpauth://totp/"+$('#label').val()+"?secret="+$('#input').val()+"&"+"issuer="+$('#issuer').val());
-});
-</script>
+    <hr/>
+
+    <div id="qrcode"></div>
+
+    <script type="text/javascript">
+    $('#submit').click(function() {
+      $('#qrcode').empty();
+      new QRCode(document.getElementById("qrcode"), "otpauth://totp/"+$('#label').val()+"?secret="+$('#input').val()+"&"+"issuer="+$('#issuer').val());
+    });
+    </script>
+  </body>
+</html>
