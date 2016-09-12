@@ -24,7 +24,7 @@
     <script type="text/javascript">
     $('#submit').click(function() {
       $('#qrcode').empty();
-      new QRCode(document.getElementById("qrcode"), "otpauth://totp/"+$('#label').val()+"?secret="+$('#input').val()+"&"+"issuer="+$('#issuer').val());
+      new QRCode(document.getElementById("qrcode"), "otpauth://totp/"+encodeURIComponent($('#label').val())+"?secret="+encodeURIComponent($('#input').val())+"&"+"issuer="+encodeURIComponent($('#issuer').val()));
     });
     </script>
   </body>
